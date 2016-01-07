@@ -3,7 +3,16 @@ package com.mkyong.users.model;
 import java.util.HashSet;
 import java.util.Set;
 
-public class User{
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "users", catalog = "yogesh")
+public class User {
 
 	private String username;
 	private String password;
@@ -26,6 +35,8 @@ public class User{
 		this.userRole = userRole;
 	}
 
+	@Id
+	@Column(name = "username", unique = true, nullable = false, length = 45)
 	public String getUsername() {
 		return this.username;
 	}
@@ -34,6 +45,7 @@ public class User{
 		this.username = username;
 	}
 
+	@Column(name = "password", nullable = false, length = 60)
 	public String getPassword() {
 		return this.password;
 	}
@@ -42,6 +54,7 @@ public class User{
 		this.password = password;
 	}
 
+	@Column(name = "enabled", nullable = false)
 	public boolean isEnabled() {
 		return this.enabled;
 	}
@@ -50,6 +63,7 @@ public class User{
 		this.enabled = enabled;
 	}
 
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
 	public Set<UserRole> getUserRole() {
 		return this.userRole;
 	}

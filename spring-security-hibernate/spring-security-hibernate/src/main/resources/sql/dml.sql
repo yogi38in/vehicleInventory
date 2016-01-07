@@ -16,3 +16,5 @@ INSERT INTO user_roles (username, role)
 VALUES ('alex', 'ROLE_USER');
 INSERT INTO user_roles (username, role)
 VALUES ('yogesh', 'ROLE_ADMIN');
+INSERT INTO user_roles (username, role)
+VALUES ('yogesh', 'ROLE_USER');

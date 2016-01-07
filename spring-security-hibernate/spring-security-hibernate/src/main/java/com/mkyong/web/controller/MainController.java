@@ -21,8 +21,8 @@ public class MainController {
 	public ModelAndView defaultPage() {
 
 		ModelAndView model = new ModelAndView();
-		model.addObject("title", "Spring Security + Hibernate Example");
-		model.addObject("message", "This is default page!");
+		model.addObject("title", "Vehicle Inventory");
+		model.addObject("message", "Vehicle Details!");
 		model.setViewName("hello");
 		return model;
 
@@ -32,8 +32,8 @@ public class MainController {
 	public ModelAndView adminPage() {
 
 		ModelAndView model = new ModelAndView();
-		model.addObject("title", "Vehicle List");
-		//model.addObject("message", "This page is for ROLE_ADMIN only!");
+		model.addObject("title", "Vehicle Inventory Admin");
+		model.addObject("message", "This page is for ROLE_ADMIN only!");
 		model.setViewName("admin");
 
 		return model;
