@@ -90,6 +90,22 @@
     padding: 7px;
     outline: none;
 }
+
+.ng-datepicker-input{
+	box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border: 1px solid #C2C2C2;
+    box-shadow: 1px 1px 4px #EBEBEB;
+    -moz-box-shadow: 1px 1px 4px #EBEBEB;
+    -webkit-box-shadow: 1px 1px 4px #EBEBEB;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    padding: 7px;
+    outline: none;
+    
+}
 .form-style-2 .input-field:focus, 
 .form-style-2 .tel-number-field:focus, 
 .form-style-2 .textarea-field:focus,  
@@ -126,3 +142,16 @@
     padding-top: 8px;
     padding-right: 5px;
 }
+
+.form-style-2 .bg-primary1{
+	width:512px;
+}
+.form-style-2 .bg-primary1 a {
+font-weight: bold;
+padding: 4px 4px 4px 8px;
+margin-bottom: 0;
+background-color: #EA7B00;
+color: #fff;
+
+}
+

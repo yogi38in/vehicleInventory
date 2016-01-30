@@ -10,12 +10,28 @@
         http://www.springframework.org/schema/context/spring-context-4.0.xsd
         http://www.springframework.org/schema/tx 
         http://www.springframework.org/schema/tx/spring-tx-4.0.xsd 
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/aop 
 	    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
 	<context:component-scan base-package="com.yogi.*" />
 
-
+<mvc:annotation-driven content-negotiation-manager="contentManager"/>
+	<bean id="contentManager"
+                class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+                <property name="favorPathExtension" value="true"/>
+                <property name="ignoreAcceptHeader" value="true" />
+                <property name="defaultContentType" value="text/html" />
+                <property name="useJaf" value="false"/>
+                <property name="mediaTypes">
+	                <map>
+	                    <entry key="html" value="text/html" />
+	                    <entry key="json" value="application/json" />
+	                    <entry key="xml" value="application/xml" />
+	                </map>
+                </property>
+        </bean>
   
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -27,37 +43,6 @@
 		</property> 
 	</bean>
 	
-	
-
-   <!--  <bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
-        <property name="resourceLoaderPath" value="/WEB-INF/html/"/>
-    </bean>
-
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
-        <property name="cache" value="true"/>
-        <property name="prefix" value=""/>
-        <property name="suffix" value=".html"/>
-        <property name="exposeSpringMacroHelpers" value="true"/>
-    </bean>
-	 -->
-	
-	<!-- <bean id="templateResolver"
-        class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
-    <property name="prefix" value="/WEB-INF/templates/" />
-    <property name="suffix" value=".html" />
-    <property name="templateMode" value="HTML5" />
-  </bean>
-    
-  <bean id="templateEngine"
-        class="org.thymeleaf.spring4.SpringTemplateEngine">
-    <property name="templateResolver" ref="templateResolver" />
-  </bean>
-   
-  <bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
-    <property name="templateEngine" ref="templateEngine" />
-  </bean>  -->
-	
-
 	
 	<tx:annotation-driven />
 

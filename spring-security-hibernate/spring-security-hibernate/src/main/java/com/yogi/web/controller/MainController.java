@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MainController {
 
-	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "/welcome**" }, method =  {RequestMethod.GET,RequestMethod.POST} )
 	public ModelAndView defaultPage() {
 
 		ModelAndView model = new ModelAndView();
@@ -28,7 +28,7 @@ public class MainController {
 
 	}
 
-	@RequestMapping(value = "/admin**", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin**", method = RequestMethod.GET )
 	public ModelAndView adminPage() {
 
 		ModelAndView model = new ModelAndView();
