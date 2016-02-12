@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 
 import com.yogi.master.dao.AssignmentFuelUpdateDao;
 import com.yogi.master.model.AssignmentFuelUpdate;
+import com.yogi.master.model.VehicleAssignment;
+import com.yogi.master.model.VehicleMaintenanceUpdate;
 
 @Repository
 public class AssignmentFuelUpdateDaoImpl implements AssignmentFuelUpdateDao {
@@ -25,6 +27,25 @@ public class AssignmentFuelUpdateDaoImpl implements AssignmentFuelUpdateDao {
 		List<AssignmentFuelUpdate> assignmentFuelUpdates = new ArrayList<AssignmentFuelUpdate>();
 
 		assignmentFuelUpdates = sessionFactory.getCurrentSession().createQuery("from AssignmentFuelUpdate").list();
+		
+		for(AssignmentFuelUpdate assignmentFuelUpdate:assignmentFuelUpdates){
+			if(assignmentFuelUpdate!=null && assignmentFuelUpdate.getVehicle()!=null && assignmentFuelUpdate.getVehicle().getVehicleAssignments()!=null){
+				assignmentFuelUpdate.getVehicle().setVehicleAssignments(null);
+			}
+			
+		}
+		
+		
+		
+		return assignmentFuelUpdates;
+	}
+	
+	@Override
+	public List<AssignmentFuelUpdate> findAllAssignmentFuelUpdates(
+			Long vehicleId, String reportMonth, String reportYear) {
+		List<AssignmentFuelUpdate> assignmentFuelUpdates = new ArrayList<AssignmentFuelUpdate>();
+
+		assignmentFuelUpdates = sessionFactory.getCurrentSession().createQuery("from AssignmentFuelUpdate where vehicle_id=? and month(entry_date)=? and year(entry_date)=?").setParameter(0, vehicleId.intValue()).setParameter(1, Integer.valueOf(reportMonth)).setParameter(2, Integer.valueOf(reportYear)).list();
 		
 		return assignmentFuelUpdates;
 	}
@@ -48,5 +69,8 @@ public class AssignmentFuelUpdateDaoImpl implements AssignmentFuelUpdateDao {
 		sessionFactory.getCurrentSession().createQuery("delete from AssignmentFuelUpdate").executeUpdate();
 		
 	}
+
+
+	
 
 }

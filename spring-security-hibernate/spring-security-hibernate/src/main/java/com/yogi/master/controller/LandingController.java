@@ -20,6 +20,11 @@ public class LandingController {
     public  String getRailwayStationPage() {
         return "railwaystations/layout";
     }
+    
+    @RequestMapping("/trains/layout")
+    public  String getTrainPage() {
+        return "trains/layout";
+    }
 
     /*@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.POST)
 	public String defaultPage() {

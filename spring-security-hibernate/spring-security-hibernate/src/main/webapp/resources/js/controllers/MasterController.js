@@ -134,6 +134,7 @@ var MasterController = function($scope, $filter, $http) {
             $scope.assignment.assignment_start_date = '';
             $scope.assignment.assignment_contact = '';
             $scope.assignment.assignment_id = '';
+            $scope.assignment.rate = '';
         }).error(function() {
             $scope.setError('Could not add a new assignment');
         });
@@ -142,6 +143,12 @@ var MasterController = function($scope, $filter, $http) {
     $scope.editAssignment = function(assignment) {
         $scope.resetError();
         $scope.assignment = assignment;
+        for (var i = 0, len = $scope.rates.length; i < len; i++) {
+        	  if ($scope.rates[i].rate_id == assignment.rate.rate_id) { // Your own property here: 
+        	    $scope.assignment.rate = $scope.rates[i];
+        	    break;
+        	  }
+        	}
         $scope.editModeAssignment = true;
     };
     
@@ -155,6 +162,7 @@ var MasterController = function($scope, $filter, $http) {
             $scope.assignment.assignment_contact = '';
             $scope.assignment.assignment_id = '';
             $scope.editModeAssignment = false;
+            $scope.assignment.rate = '';
         }).error(function() {
             $scope.setError('Could not add a update assignment');
         });
@@ -174,6 +182,7 @@ var MasterController = function($scope, $filter, $http) {
             $scope.assignment.assignment_start_date = '';
             $scope.assignment.assignment_contact = '';
             $scope.assignment.assignment_id = '';
+            $scope.assignment.rate = '';
         }
         
     };

@@ -58,6 +58,7 @@ var RailwayStationController = function($scope, $filter, $http) {
             $scope.assignmentFuelUpdate.vehicle_km_reading = '';
             $scope.assignmentFuelUpdate.entry_type = '';
             $scope.assignmentFuelUpdate.receipt_no = '';
+            $scope.assignmentFuelUpdate.entry_date = '';
         }).error(function() {
             $scope.setError('Could not add a new assignmentFuelUpdate');
         });
@@ -67,7 +68,7 @@ var RailwayStationController = function($scope, $filter, $http) {
         $scope.resetError();
         $scope.assignmentFuelUpdate = assignmentFuelUpdate;
         $scope.editModeAssignmentFuelUpdate = true;
-        
+        $scope.assignmentFuelUpdate.entry_date = new Date($filter('date')(assignmentFuelUpdate.entry_date, 'dd MMMM yyyy'));
         for (var i = 0, len = $scope.vehicles.length; i < len; i++) {
       	  if ($scope.vehicles[i].vehicleId == assignmentFuelUpdate.vehicle.vehicleId) { // Your own property here: 
       	    $scope.assignmentFuelUpdate.vehicle = $scope.vehicles[i];
@@ -97,6 +98,7 @@ var RailwayStationController = function($scope, $filter, $http) {
             $scope.assignmentFuelUpdate.vehicle_km_reading = '';
             $scope.assignmentFuelUpdate.entry_type = '';
             $scope.assignmentFuelUpdate.receipt_no = '';
+            $scope.assignmentFuelUpdate.entry_date = '';
             $scope.editModeAssignmentFuelUpdate = false;
         }).error(function() {
             $scope.setError('Could not add a update assignmentFuelUpdate');
@@ -121,6 +123,7 @@ var RailwayStationController = function($scope, $filter, $http) {
              $scope.assignmentFuelUpdate.vehicle_km_reading = '';
              $scope.assignmentFuelUpdate.entry_type = '';
              $scope.assignmentFuelUpdate.receipt_no = '';
+             $scope.assignmentFuelUpdate.entry_date = '';
         }
         
     };

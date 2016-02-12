@@ -26,6 +26,13 @@ public class VehicleAssignmentDaoImpl implements VehicleAssignmentDao {
 
 		vehicleAssignments = sessionFactory.getCurrentSession().createQuery("from VehicleAssignment").list();
 		
+		for(VehicleAssignment vehicleAssignment:vehicleAssignments){
+			if(vehicleAssignment!=null && vehicleAssignment.getVehicle()!=null && vehicleAssignment.getVehicle().getVehicleAssignments()!=null){
+				vehicleAssignment.getVehicle().setVehicleAssignments(null);
+			}
+			
+		}
+		
 		return vehicleAssignments;
 	}
 

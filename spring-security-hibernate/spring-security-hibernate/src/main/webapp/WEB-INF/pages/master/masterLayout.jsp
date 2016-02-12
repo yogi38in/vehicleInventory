@@ -17,11 +17,12 @@
 <div class="form-style-2">
 	
 	
-	<div class="form-style-2-heading" ng-click="toggle_visibility('vehicletoggle');">Provide Vehicle information</div>
+	<div class="form-style-2-heading" ng-click="toggle_visibility('vehicletoggle');"> Vehicle information</div>
+	
 	
 	
 	<div id="vehicletoggle" style="display:none;" class="masterdata">
-	
+	<div class="form-style-2-subheading">Enter Vehicle Details</div>
 		
 		
 		<label for="field1" ng-hide=true><span>Vehicle Id <span class="required">*</span></span>
@@ -52,10 +53,10 @@
 	
 	
 	
-	<div class="form-style-2-heading">Vehicle List</div>
-<div class="alert alert-info" ng-show="vehicles.length == 0">
-    No vehicles found
-</div>
+	<div class="form-style-2-subheading">Vehicle Details List</div>
+		<div class="alert alert-info" ng-show="vehicles.length == 0">
+		    No vehicles found
+		</div>
 
 <table class="table table-bordered table-striped" ng-show="vehicles.length > 0" style="width:902px">
     <thead>
@@ -95,72 +96,14 @@
 </div>
 </div>
 
-<div class="form-style-2">
-	<div class="form-style-2-heading" ng-click="toggle_visibility('assignmenttoggle');">Provide Assignment information</div>
-	
-	<div id="assignmenttoggle" style="display:none;" class="masterdata">
-		
-		<label for="field1" ng-hide=true><span style="width:200px">Assignment Id <span class="required">*</span></span>
-		 	<input type="text" class="input-field" ng-model="assignment.assignment_id" placeholder="Assignment Id" /></label> 
-		 <label for="field1" ><span style="width:200px">Assignment Name <span class="required">*</span></span>
-		 	<input type="text" class="input-field" ng-model="assignment.assignment_name" placeholder="Assignment Name" /></label> 
-		<label for="field2"><span style="width:200px">Assignment Start Date <span class="required">*</span></span>
-			<input type="text" class="input-field" ng-model="assignment.assignment_start_date" placeholder="Assignment Start Date" /></label> 
-		<label for="field2"><span style="width:200px">Assignment Contact <span class="required">*</span></span>
-		   <input type="text" class="input-field" ng-model="assignment.assignment_contact" placeholder="Assignment Contact" /></label> 
-		<label for="field5">
-		  
-		<label>
-		  
-		<span style="width:200px">&nbsp;</span>
-		<input type="submit" value="Submit" ng-disabled="!assignment.assignment_contact || !assignment.assignment_name" ng-hide="editModeAssignment" ng-click="addNewAssignment(assignment)"/>
-		<button type="button" class="btn btn-primary" ng-disabled="!assignment.assignment_contact || !assignment.assignment_name" ng-show="editModeAssignment" ng-click="updateAssignment(assignment)">Save Assignment</button>
-		</label>
-	
-	<div class="form-style-2-heading">Assignment List</div>
-<div class="alert alert-info" ng-show="assignments.length == 0">
-    No assignments found
-</div>
 
-<table class="table table-bordered table-striped" ng-show="assignments.length > 0" style="width:902px">
-    <thead>
-        <tr>
-            <th style="text-align: center;"><span>Assignment Name</span></th>
-            <th style="text-align: center;">Assignment Start date</th>
-            <th style="text-align: center;">Assignment Contact</th>
-            <th style="text-align: center;">Edit</th>
-            <th style="text-align: center;">Remove</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="assignment in assignments | orderBy:predicate">
-            <td style="text-align: center;">{{assignment.assignment_name}}</td>
-            <td>{{assignment.assignment_start_date}}</td>
-            <td>{{assignment.assignment_contact}}</td>
-            <td>
-                <button class="btn btn-mini btn-danger" ng-click="removeAssignment(assignment.assignment_id)">Remove</button>
-            </td>
-            <td>
-                <button class="btn btn-mini btn-success" ng-click="editAssignment(assignment)">Edit</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
-<button class="btn btn-danger" ng-show="vehicles.length > 1" ng-click="removeAllAssignments()">Remove All Assignments</button>
-</div>
-<table>
-	<tr></tr>
-	<tr></tr>
-	<tr></tr>
-</table>
-
-</div>
 
 <div class="form-style-2">
-	<div class="form-style-2-heading" ng-click="toggle_visibility('ratetoggle');">Provide Rate information</div>
+	<div class="form-style-2-heading" ng-click="toggle_visibility('ratetoggle');"> Rate information</div>
+	
 	
 	<div id="ratetoggle" style="display:none;" class="masterdata">
-		
+		<div class="form-style-2-subheading">Enter Rate Details</div>
 		<label for="field1" ng-hide=true><span style="width:200px">Assignment Id <span class="required">*</span></span>
 		 	<input type="text" class="input-field" ng-model="rate.rate_id" placeholder="Rate Id" /></label> 
 		 <label for="field1" ><span style="width:200px">Rate Name <span class="required">*</span></span>
@@ -184,7 +127,7 @@
 		<button type="button" class="btn btn-primary" ng-disabled="!rate.rate_name" ng-show="editModeRate" ng-click="updateRate(rate)">Save Rate</button>
 		</label>
 	
-	<div class="form-style-2-heading">Rate List</div>
+	<div class="form-style-2-subheading">Rate Details List</div>
 <div class="alert alert-info" ng-show="rates.length == 0">
     No rates found
 </div>
@@ -223,12 +166,79 @@
 
 </div>
 
+<div class="form-style-2">
+	<div class="form-style-2-heading" ng-click="toggle_visibility('assignmenttoggle');"> Assignment information</div>
+	
+	<div id="assignmenttoggle" style="display:none;" class="masterdata">
+		<div class="form-style-2-subheading">Enter Assignment Details</div>
+		<label for="field1" ng-hide=true><span style="width:200px">Assignment Id <span class="required">*</span></span>
+		 	<input type="text" class="input-field" ng-model="assignment.assignment_id" placeholder="Assignment Id" /></label> 
+		 <label for="field1" ><span style="width:200px">Assignment Name <span class="required">*</span></span>
+		 	<input type="text" class="input-field" ng-model="assignment.assignment_name" placeholder="Assignment Name" /></label> 
+		<label for="field2"><span style="width:200px">Assignment Start Date <span class="required">*</span></span>
+			<input type="text" class="input-field" ng-model="assignment.assignment_start_date" placeholder="Assignment Start Date" /></label> 
+		<label for="field2"><span style="width:200px">Assignment Contact <span class="required">*</span></span>
+		   <input type="text" class="input-field" ng-model="assignment.assignment_contact" placeholder="Assignment Contact" /></label> 
+		<label for="field1" ><span style="width:200px">Rate Charged <span class="required">*</span></span>
+		      <select  class="select-field" ng-model="assignment.rate" ng-options="rate as rate.rate_name  for rate in rates">
+    			<option selected>--</option></select>
+		 </label>
+		<label for="field5">
+		  
+		<label>
+		  
+		<span style="width:200px">&nbsp;</span>
+		<input type="submit" value="Submit" ng-disabled="!assignment.assignment_contact || !assignment.assignment_name" ng-hide="editModeAssignment" ng-click="addNewAssignment(assignment)"/>
+		<button type="button" class="btn btn-primary" ng-disabled="!assignment.assignment_contact || !assignment.assignment_name" ng-show="editModeAssignment" ng-click="updateAssignment(assignment)">Save Assignment</button>
+		</label>
+	
+	<div class="form-style-2-subheading">Assignment Details List</div>
+<div class="alert alert-info" ng-show="assignments.length == 0">
+    No assignments found
+</div>
+
+<table class="table table-bordered table-striped" ng-show="assignments.length > 0" style="width:902px">
+    <thead>
+        <tr>
+            <th style="text-align: center;"><span>Assignment Name</span></th>
+            <th style="text-align: center;">Assignment Start date</th>
+            <th style="text-align: center;">Assignment Contact</th>
+            <th style="text-align: center;">Assignment Rate</th>
+            <th style="text-align: center;">Edit</th>
+            <th style="text-align: center;">Remove</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="assignment in assignments | orderBy:predicate">
+            <td style="text-align: center;">{{assignment.assignment_name}}</td>
+            <td>{{assignment.assignment_start_date}}</td>
+            <td>{{assignment.assignment_contact}}</td>
+            <td>{{assignment.rate.rate_charged}}</td>
+            <td>
+                <button class="btn btn-mini btn-danger" ng-click="removeAssignment(assignment.assignment_id)">Remove</button>
+            </td>
+            <td>
+                <button class="btn btn-mini btn-success" ng-click="editAssignment(assignment)">Edit</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<button class="btn btn-danger" ng-show="vehicles.length > 1" ng-click="removeAllAssignments()">Remove All Assignments</button>
+</div>
+<table>
+	<tr></tr>
+	<tr></tr>
+	<tr></tr>
+</table>
+
+</div>
 
 <div class="form-style-2">
-	<div class="form-style-2-heading" ng-click="toggle_visibility('vehicleAssignmenttoggle');">Provide VehicleAssignment information</div>
+	<div class="form-style-2-heading" ng-click="toggle_visibility('vehicleAssignmenttoggle');"> VehicleAssignment information</div>
+	
 	
 	<div id="vehicleAssignmenttoggle" style="display:none;" class="masterdata">
-		
+		<div class="form-style-2-subheading">Enter VehicleAssignment Details</div>
 		<label for="field1" ng-hide=true><span style="width:200px">VehicleAssignment Id <span class="required">*</span></span>
 		 	<input type="text" class="input-field" ng-model="vehicleAssignment.vehicle_assignment_id" placeholder="VehicleAssignment Id" /></label> 
 		 <label for="field1" ><span style="width:200px">Vehicle Assignment Name <span class="required">*</span></span>
@@ -272,7 +282,7 @@
 		<button type="button" class="btn btn-primary" ng-disabled="!vehicleAssignment.assignment" ng-show="editModeVehicleAssignment" ng-click="updateVehicleAssignment(vehicleAssignment)">Save VehicleAssignment</button>
 		</label>
 	
-	<div class="form-style-2-heading">VehicleAssignment List</div>
+	<div class="form-style-2-subheading">VehicleAssignment Details List</div>
 <div class="alert alert-info" ng-show="vehicleAssignments.length == 0">
     No vehicleAssignments found
 </div>

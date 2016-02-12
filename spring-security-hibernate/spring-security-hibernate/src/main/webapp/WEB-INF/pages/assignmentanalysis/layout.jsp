@@ -9,10 +9,10 @@
 <div class="form-style-3" >
 		<table>
 			<tr>
-				<td colspan="2"><span>Vehicle Name <span class="required">*</span></span></td>
+				<td colspan="2"><span>Assignment Name <span class="required">*</span></span></td>
 				<td colspan="2"><select  class="select-field" ng-model="requestparam.vehicle" 
     			ng-options="vehicle as vehicle.vehicle_name  for vehicle in vehicles" >
-    			<option value=''>- Choose Vehicle -</option></select></td>
+    			<option value=''>- Choose Assignment -</option></select></td>
 				<td colspan="2"><span>Report Month/ Year <span class="required">*</span></span></td>
 				<td colspan="2"><select class="select-field" name="singleSelect" ng-model="requestparam.reportMonth" >
 			      <option value="1" selected="selected">Jan</option>
@@ -94,7 +94,7 @@
 </div>
 
 
-<table class="table table-bordered table-striped" ng-show="vehicleReportList.vehicleFuelUpdateDTOs.length > 0" >
+<table class="table table-bordered table-striped" ng-show="vehicleReportList.vehicleFuelUpdateDTOs.length > 0" style="width:1200px; height:200px" scrollable=true>
     <thead>
         <tr>
             <th style="text-align: center;"><span>Assignment Name</span></th>
@@ -130,7 +130,7 @@
 </div>
 
 
-<table class="table table-bordered table-striped" ng-show="vehicleReportList.vehicleMaintenanceUpdateDTOs.length > 0" >
+<table class="table table-bordered table-striped" ng-show="vehicleReportList.vehicleMaintenanceUpdateDTOs.length > 0" style="width:1200px">
     <thead>
         <tr>
             <th style="text-align: center;">Vehicle Name</th>

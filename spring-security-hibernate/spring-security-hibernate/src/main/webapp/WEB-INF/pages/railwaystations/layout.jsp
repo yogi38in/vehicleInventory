@@ -7,9 +7,10 @@
 
 
 <div class="form-style-2">
-	<div class="form-style-2-heading" ng-click="toggle_visibility('vehicletoggle');">Provide Assignment Fuel Update information</div>
+	<div class="form-style-2-heading" ng-click="toggle_visibility('vehicletoggle');"> Assignment Fuel Update information</div>
 	
 <div id="vehicletoggle" style="display:none;" class="masterdata">		
+<div class="form-style-2-subheading" >Enter Assignment Fuel Details</div>
 		<label for="field1" ng-hide=true><span>Vehicle Fuel Update Id <span class="required">*</span></span>
 		 	<input type="text" class="input-field" ng-model="assignmentFuelUpdate.assignment_fuel_update_id" placeholder="Assignment Fuel Update Id" /></label> 
 		 <label for="field1" ><span>Assignment Name <span class="required">*</span></span>
@@ -44,6 +45,9 @@
 		
 		<label for="field2"><span>Receipt No. <span class="required">*</span></span>
 		   <input type="text" class="input-field" ng-model="assignmentFuelUpdate.receipt_no" placeholder="Receipt No" /></label>   
+		   
+		<label for="field2"><span>Fuel Filled Date <span class="required">*</span></span>
+		   <input type="date" class="input-field" ng-model="assignmentFuelUpdate.entry_date" placeholder="Fuel Filled Date" /></label> 
 		
 		<label for="field5"></label>
 		  
@@ -54,7 +58,7 @@
 		<button type="button" class="btn btn-primary" ng-disabled="!assignmentFuelUpdate.vehicle" ng-show="editModeAssignmentFuelUpdate" ng-click="updateAssignmentFuelUpdate(assignmentFuelUpdate)">Save Fuel Updates</button>
 		</label>
 	
-	<div class="form-style-2-heading">Assignment Fuel Update List</div>
+	<div class="form-style-2-subheading">Assignment Fuel Update List</div>
 <div class="alert alert-info" ng-show="assignments.length == 0">
     No assignments found
 </div>
@@ -70,6 +74,7 @@
             <th style="text-align: center;">Fuel Amount</th>
             <th style="text-align: center;">Vehicle Km Reading</th>
             <th style="text-align: center;">Receipt No</th>
+            <th style="text-align: center;">Fuel Filled Date</th>
             <th style="text-align: center;">Edit</th>
             <th style="text-align: center;">Remove</th>
         </tr>
@@ -84,6 +89,7 @@
             <td>{{assignmentFuelUpdate.fuel_bill_amt}}</td>
             <td>{{assignmentFuelUpdate.vehicle_km_reading}}</td>
             <td>{{assignmentFuelUpdate.receipt_no}}</td>
+            <td>{{assignmentFuelUpdate.entry_date | date:'dd-MMM-yyyy'}}</td>
             <td>
                 <button class="btn btn-mini btn-danger" ng-click="removeAssignmentFuelUpdate(assignmentFuelUpdate.assignment_fuel_update_id)">Remove</button>
             </td>
@@ -101,9 +107,10 @@
 </div>
 
 
-<div class="form-style-2-heading" ng-click="toggle_visibility('vehicleMaintenancetoggle');">Provide Vehicle Maintenance Update information</div>
+<div class="form-style-2-heading" ng-click="toggle_visibility('vehicleMaintenancetoggle');"> Vehicle Maintenance Update information</div>
 	
-<div id="vehicleMaintenancetoggle" style="display:none;" class="masterdata">		
+<div id="vehicleMaintenancetoggle" style="display:none;" class="masterdata">	
+<div class="form-style-2-subheading">Enter Vehicle Maintenance Details</div>	
 		<label for="field1" ng-hide=true><span>Vehicle Maintenance Update Id <span class="required">*</span></span>
 		 	<input type="text" class="input-field" ng-model="vehicleMaintenanceUpdate.vehicle_maintenance_update_id" placeholder="Vehicle Maintenance Update Id" />
 		 </label> 
@@ -116,7 +123,7 @@
     </label> 
 	
 	<label for="field2"><span>Maintenance Date <span class="required">*</span></span>
-		   <input type="date" class="input-field" ng-model="vehicleMaintenanceUpdate.maintenance_date" placeholder="Maintenance Date" min="2016-01-01"  required />
+		   <input type="date" class="input-field" ng-model="vehicleMaintenanceUpdate.maintenance_date" placeholder="Maintenance Date" min="2016-01-01"  required /></label>
 		<label for="field2"><span>Maintenance Amount <span class="required">*</span></span>
 		   <input type="text" class="input-field" ng-model="vehicleMaintenanceUpdate.maintenance_amt" placeholder="Maintenance Amount" /></label> 
 		
@@ -136,7 +143,7 @@
 		<button type="button" class="btn btn-primary" ng-disabled="!vehicleMaintenanceUpdate.vehicle" ng-show="editModeVehicleMaintenanceUpdate" ng-click="updateVehicleMaintenanceUpdate(vehicleMaintenanceUpdate)">Save Fuel Updates</button>
 		</label>
 	
-	<div class="form-style-2-heading">Assignment Fuel Update List</div>
+	<div class="form-style-2-subheading">Assignment Fuel Update List</div>
 <div class="alert alert-info" ng-show="assignments.length == 0">
     No assignments found
 </div>

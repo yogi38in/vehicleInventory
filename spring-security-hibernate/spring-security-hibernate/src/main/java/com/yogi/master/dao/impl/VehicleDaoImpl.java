@@ -5,12 +5,16 @@ import java.util.List;
 
 
 
+
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.yogi.master.dao.VehicleDao;
+import com.yogi.master.model.Assignment;
+import com.yogi.master.model.VehicleAssignment;
 import com.yogi.master.model.Vehicles;
 
 @Repository
@@ -47,7 +51,14 @@ public class VehicleDaoImpl implements VehicleDao {
 		List<Vehicles> vehicles = new ArrayList<Vehicles>();
 
 		vehicles = sessionFactory.getCurrentSession().createQuery("from Vehicles").list();
-		
+		for(Vehicles vehicle:vehicles){
+			for(VehicleAssignment assignment:vehicle.getVehicleAssignments()){
+				if(assignment!=null && assignment.getVehicle()!=null){
+					assignment.setVehicle(null);
+				}
+				
+			}
+		}
 		return vehicles;
 	}
 

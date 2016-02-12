@@ -18,11 +18,14 @@ import org.apache.commons.lang.time.DateUtils;
 import org.hibernate.annotations.Proxy;
 import org.hibernate.annotations.Type;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "vehicle_assignment", catalog = "yogesh", uniqueConstraints = @UniqueConstraint(columnNames = {"vehicle_id" , "assignment_id", "rate_id" }))
-@JsonIgnoreProperties(ignoreUnknown = false)
 @Proxy(lazy = false)
 public class VehicleAssignment {
 

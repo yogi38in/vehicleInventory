@@ -4,8 +4,11 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -24,7 +27,6 @@ public class Assignment {
 	@Column(name = "assignment_id", unique = true, nullable = false)
 	private Integer assignment_id;
 	
-	
 	@Column(name = "assignment_name", nullable = false, length = 45)
 	private String assignment_name;
 	
@@ -34,6 +36,9 @@ public class Assignment {
 	@Column(name = "assignment_contact", nullable = false, length = 45)
 	private String assignment_contact;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "rate_id", nullable = false)
+	private Rate rate;
 
 	public Assignment() {
 	}
@@ -76,6 +81,16 @@ public class Assignment {
 
 	public void setAssignment_contact(String assignment_contact) {
 		this.assignment_contact = assignment_contact;
+	}
+
+
+	public Rate getRate() {
+		return rate;
+	}
+
+
+	public void setRate(Rate rate) {
+		this.rate = rate;
 	}
 	
 	

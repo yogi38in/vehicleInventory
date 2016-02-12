@@ -42,14 +42,7 @@ CREATE TABLE user_roles (
     CONSTRAINT fk_vehicle_user_id FOREIGN KEY (user_id) REFERENCES users (user_id)
  )
  
- CREATE TABLE assignment (
- 	assignment_id int(11) NOT NULL AUTO_INCREMENT,
-    assignment_name VARCHAR(45) NOT NULL ,
-    assignment_start_date VARCHAR(45) NOT NULL ,
-    assignment_contact VARCHAR(45) NOT NULL ,
-    PRIMARY KEY (assignment_id),
-    UNIQUE KEY uni_assignment_id (assignment_id)
- )
+ 
  
  CREATE TABLE rate (
  	rate_id int(11) NOT NULL AUTO_INCREMENT,
@@ -58,6 +51,16 @@ CREATE TABLE user_roles (
  	rate_charged DECIMAL(6,2) NOT NULL ,
  	PRIMARY KEY (rate_id),
     UNIQUE KEY uni_rate_id (rate_id,rate_name,energy_source_name,rate_charged)
+ )
+ 
+ CREATE TABLE assignment (
+ 	assignment_id int(11) NOT NULL AUTO_INCREMENT,
+    assignment_name VARCHAR(45) NOT NULL ,
+    assignment_start_date VARCHAR(45) NOT NULL ,
+    assignment_contact VARCHAR(45) NOT NULL ,
+    rate_id int(11) NOT NULL ,
+    PRIMARY KEY (assignment_id),
+    UNIQUE KEY uni_assignment_id (assignment_id)
  )
  
  CREATE TABLE vehicle_assignment (
@@ -76,6 +79,7 @@ CREATE TABLE user_roles (
  	assignment_fuel_update_id int(11) NOT NULL AUTO_INCREMENT,
  	assignment_id int(11) NOT NULL ,
  	vehicle_id int(11) NOT NULL ,
+    rate_id int(11) NOT NULL ,
  	fuel_quantity DECIMAL(12,2) NOT NULL ,
  	fuel_rate DECIMAL(12,2) NOT NULL ,
  	fuel_bill_amt DECIMAL(12,2) NOT NULL ,

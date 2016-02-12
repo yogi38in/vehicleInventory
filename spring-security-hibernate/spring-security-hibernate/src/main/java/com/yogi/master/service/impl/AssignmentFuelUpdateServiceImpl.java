@@ -24,10 +24,12 @@ public class AssignmentFuelUpdateServiceImpl implements AssignmentFuelUpdateServ
 		return assignmentFuelUpdateDao.findAllAssignmentFuelUpdates();
 	}
 
+
+	
 	@Transactional(readOnly=false)
 	@Override
 	public void addAssignmentFuelUpdate(AssignmentFuelUpdate assignmentFuelUpdate) {
-		
+		assignmentFuelUpdate.setRate(assignmentFuelUpdate.getAssignment().getRate());
 		assignmentFuelUpdateDao.addAssignmentFuelUpdate(assignmentFuelUpdate);
 	}
 

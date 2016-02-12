@@ -15,5 +15,6 @@ public interface AssignmentFuelUpdateService {
 	
 	void deleteAll();
 
+
 	
 }

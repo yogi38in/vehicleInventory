@@ -2,6 +2,9 @@ package com.yogi.master.model;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+import java.util.Iterator;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,17 +12,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.Proxy;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.yogi.users.model.User;
 
 @Entity
 @Table(name = "vehicles", catalog = "yogesh", uniqueConstraints = @UniqueConstraint(columnNames = {"vehicle_id" }))
-@JsonIgnoreProperties(ignoreUnknown = false)
 @Proxy(lazy = false)
 public class Vehicles {
 
@@ -43,6 +50,10 @@ public class Vehicles {
 	
 	@Column(name = "vehicle_model", nullable = false, length = 45)
 	private String vehicle_model;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="vehicle")
+	private Set<VehicleAssignment> vehicleAssignments;
+
 
 	public Vehicles() {
 	}
@@ -93,6 +104,14 @@ public class Vehicles {
 
 	public void setVehicle_model(String vehicle_model) {
 		this.vehicle_model = vehicle_model;
+	}
+
+	public Set<VehicleAssignment> getVehicleAssignments() {
+		return vehicleAssignments;
+	}
+
+	public void setVehicleAssignments(Set<VehicleAssignment> vehicleAssignments) {
+		this.vehicleAssignments=vehicleAssignments;
 	}
 
 	

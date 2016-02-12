@@ -40,8 +40,8 @@
     <ul class="menu">
         <li><a href="#/master">Masters</a></li>
         <li><a href="#/railwaystations">Daily Update</a></li>
-        <li><a href="#/trains">Reports</a></li>
-        <li><a href="#/railwaystations">Analysis</a></li>
+        <li><a href="#/trains">Vehicle Reports</a></li>
+        <li><a href="#/assignmentanalysis">Assignment Analysis</a></li>
          
     </ul>
     <hr class="" />

@@ -3,6 +3,7 @@ package com.yogi.master.model;
 import static javax.persistence.GenerationType.IDENTITY;
 
 import java.math.BigInteger;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.Proxy;
+import org.hibernate.annotations.Type;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -37,6 +39,10 @@ public class AssignmentFuelUpdate {
 	@JoinColumn(name = "assignment_id", nullable = false)
 	private Assignment assignment;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "rate_id", nullable = false)
+	private Rate rate;
+	
 	@Column(name = "fuel_quantity", nullable = false, length = 45)
 	private Double fuel_quantity;
 
@@ -54,6 +60,10 @@ public class AssignmentFuelUpdate {
 	
 	@Column(name = "receipt_no", nullable = false, length = 45)
 	private String receipt_no;
+	
+	@Type(type="timestamp")
+	@Column(name = "entry_date", nullable = false)
+	private Date entry_date;
 
 	public AssignmentFuelUpdate() {
 	}
@@ -128,6 +138,22 @@ public class AssignmentFuelUpdate {
 
 	public void setReceipt_no(String receipt_no) {
 		this.receipt_no = receipt_no;
+	}
+
+	public Date getEntry_date() {
+		return entry_date;
+	}
+
+	public void setEntry_date(Date entry_date) {
+		this.entry_date = entry_date;
+	}
+
+	public Rate getRate() {
+		return rate;
+	}
+
+	public void setRate(Rate rate) {
+		this.rate = rate;
 	}
 
 

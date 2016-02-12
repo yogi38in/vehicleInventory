@@ -9,6 +9,9 @@ public interface VehicleMaintenanceUpdateDao {
 	
     List<VehicleMaintenanceUpdate> findAllVehicleMaintenanceUpdates();
     
+    List<VehicleMaintenanceUpdate> findAllVehicleMaintenanceUpdates(Long vehicleId,
+			String reportMonth, String reportYear);
+    
     void addVehicleMaintenanceUpdate(VehicleMaintenanceUpdate vehicleMaintenanceUpdate);
     
     void deleteVehicleMaintenanceUpdateById(Long id);
